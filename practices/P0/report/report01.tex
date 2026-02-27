@@ -186,12 +186,9 @@ ld -o ejecutable -dynamic-linker /lib/ld-linux-x86-64.so.2 \
 \subsection{Ejecución}
 % ------------------------------------------------------------
 
-\begin{figure}[h!]
 \begin{lstlisting}
 ./ejecutable
 \end{lstlisting}
-  \caption{Comando para ejecutar el programa ejecutable}
-\end{figure}
 
 \begin{figure}[h!]
 \begin{lstlisting}
@@ -210,7 +207,7 @@ original y se realizó lo siguiente:
 
 \begin{enumerate}[label=\alph*)]
   \item Generamos nuevamente un archivo \texttt{.i} con el nombre programaPI.i y notamos dos diferencias a primera vista. Veamos los siguientes extractos comprarando ambos archivos \textit{.i}.
-\begin{figure}
+    \begin{figure}[!h]
 \begin{lstlisting}
 int main ( void ) {
   printf ("Hola Mundo !\n");
@@ -222,7 +219,7 @@ int main ( void ) {
 \end{lstlisting}
 \caption{\textit{Extracto de el original programa.i}}
 \end{figure}
-\begin{figure}
+  \begin{figure}[!h]
 \begin{lstlisting}
 int main ( void ) {
   printf ("Hola Mundo !\n");
@@ -231,49 +228,81 @@ int main ( void ) {
   return 0;
 }
 \end{lstlisting}
-\caption{\textit{Extracto de programaPI.i}}
-\end{figure}
+\caption{\textit{Extracto de nuevo programa.i}}
+\end{figure} 
+\par
 Esto ocurre debido a que ahora que PI esta definido, el directivo de compilacion condicional define el macro area(r) de otra manera, haciendo asi que cambie el codigo preprocesado.
 \item ¿Cambia en algo la ejecución final? \par
 Veamos la ejecucion despues de haber descomentado la definicion de PI.
-\begin{figure}[h!]
 \begin{lstlisting}
 ./ejecutable02
 \end{lstlisting}
-  \caption{Comando para ejecutar el nuevo programa ejecutable}
-\end{figure}
-
-\begin{figure}[h!]
 \begin{lstlisting}
 Hola Mundo !
 Resultado : 28.274334
 \end{lstlisting}
-  \caption{Salida de el nuevo programa ejecutable}
-\end{figure}
 Notemos que el resultado cambia de valor, con respecto a valores despues del punto decimal. Esto ocurre ya que PI ahora tiene muchos mas digitos de precision flotante, permitiendonos hacer operaciones con mayor precision.
 \end{enumerate}
+\clearpage
 
 % ------------------------------------------------------------
 \subsection{Segundo programa con directivas del preprocesador}
 % ------------------------------------------------------------
 
-Se escribió un segundo programa en lenguaje C que incluye 4 directivas del
-preprocesador distintas entre sí y diferentes de las utilizadas en el primer
-programa.\footnote{Puede consultarse la lista de directivas en la documentación
-en línea:
-\url{https://gcc.gnu.org/onlinedocs/cpp/Index-of-Directives.html}.
-También se puede revisar la entrada para el preprocesador con
-\texttt{man cpp}.}
+Se escribió un segundo programa en lenguaje C que incluye 4 directivas del preprocesador distintas entre sí y diferentes de las utilizadas en el primer programa.
 
+\begin{figure}[h!]
+\begin{lstlisting}
+#define CONS 7
+
+// #define CONS2 4
+
+#ifndef CONS
+#error "We need a cons"
+#endif
+
+#ifndef CONS2
+#warning "We dont have a constant number 2"
+#endif
+
+#pragma GCC warning "You looking good today, be careful"
+
+#ifdef CONS2
+#define mult CONS * CONS2
+#else 
+#define mult CONS * 2
+#endif
+
+#include <stdio.h>
+
+/**
+* Compiladores 2025-2
+*
+*/
+int main ( void ) {
+  printf ("Hola Mundo !\n");
+  int cons_times_cons2 = mult;
+  printf ("Resultado : %d\n", cons_times_cons2);
+  return 0;
+}
+\end{lstlisting}
+  \caption{Codigo con diferentes directivas}
+\end{figure}
+
+El codigo calcula el producto de dos constantes las cuales son modificadas con directivos de preprocesamiento. Los directivos que use fueron los siguientes:
 \begin{enumerate}[label=\alph*)]
-  \item Explique la utilidad general de cada directiva y su función particular
-        en el programa.
+  \item \textbf{\#ifndef} \#ARG \par
+    Ejecuta el codigo dentro de el cuerpo del if si el \#ARG no esta definido. Lo uso para asegurar que por lo menos haya una constante definida.
+  \item \textbf{\#error} \#ARG \par
+    Falla con el mensaje de error \#ARG en la etapa del preprocesamiento. Si no hay por lo menos una constante definida el programa no podira funcionar, es por eso que envio un error desde ese parte del proceso.
+  \item \textbf{\#warning} \#ARG
+En la etapa de preprocesado presenta una advertencia con elmensaje \#ARG. Esto lo hice para advertirle al usuario que estaremos usando el valor default de la constante dos, dado que no pudimos encontrar otro.
+  \item \textbf{\#pragma} 
+    Da instrucciones especificas en el proceso de compilacion, por ejemplo para que solo lea una vez cierto archivo, o que envie una advertencia. Esta directiva la usamos para dar un boost de seguridad al programador, lo cual es esencial para el funcionamiento del programa.
 \end{enumerate}
 
 % ============================================================
 \section{Resultados y Conclusiones}
 % ============================================================
-
-
-
+Esta practica, me dejo ver de una manera mas clara lo complejo que puede llegar a ser el generar codigo objeto capaz de ser ejecutado. Pero, de la misma manera me dio ciertas ideas para el como organizar mi proyecto.
 \end{document}

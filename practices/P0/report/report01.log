@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2026.2.27)  27 FEB 2026 16:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2026.2.27)  27 FEB 2026 17:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -509,7 +509,15 @@ LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
 
 [3]
 
-[4] (./report01.aux
+[4]
+
+[5]
+
+[6
+
+]
+
+[7] (./report01.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -521,30 +529,26 @@ Package rerunfilecheck Info: File `report01.out' has not changed.
 (rerunfilecheck)             Checksum: EFF503ED815DEBDE634CF1A0C4676027;1669.
  ) 
 Here is how much of TeX's memory you used:
- 13361 strings out of 475109
- 200044 string characters out of 5765325
- 909317 words of memory out of 5000000
- 36153 multiletter control sequences out of 15000+600000
- 578222 words of font info for 90 fonts, out of 8000000 for 9000
+ 13406 strings out of 475109
+ 200752 string characters out of 5765325
+ 921317 words of memory out of 5000000
+ 36145 multiletter control sequences out of 15000+600000
+ 573722 words of font info for 78 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 75i,8n,79p,399b,1400s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,7n,79p,399b,1400s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/t
 exmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts
 /type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/c
-m-super/sfit1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm070
-0.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/sha
-re/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/f
-onts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/publ
-ic/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfr
-m2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr
-/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texmf-di
-st/fonts/type1/public/cm-super/sftt1095.pfb></usr/share/texmf-dist/fonts/type1/
-public/cm-super/sftt1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super
-/sftt1440.pfb>
-Output written on report01.pdf (4 pages, 288431 bytes).
+m-super/sfit1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm120
+0.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/sha
+re/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/share/texmf-dist/f
+onts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/cm-super/sftt1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sft
+t1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb>
+Output written on report01.pdf (7 pages, 258126 bytes).
 PDF statistics:
- 216 PDF objects out of 1000 (max. 8388607)
- 178 compressed objects within 2 object streams
- 71 named destinations out of 1000 (max. 500000)
+ 276 PDF objects out of 1000 (max. 8388607)
+ 242 compressed objects within 3 object streams
+ 130 named destinations out of 1000 (max. 500000)
  81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
