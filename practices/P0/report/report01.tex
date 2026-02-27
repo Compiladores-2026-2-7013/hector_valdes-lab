@@ -9,6 +9,7 @@
 \usepackage{geometry}
 \usepackage{hyperref}
 \usepackage{listings}
+\usepackage{multicol}
 
 \geometry{margin=2.5cm}
 
@@ -17,8 +18,14 @@
   basicstyle=\ttfamily\small,
   breaklines=true,
   frame=single,
-  language=bash
+  language=bash,
+  showstringspaces=false
 }
+
+% --- Commands ---- %
+
+\newcommand{\solution}{\textit{Solution}}
+
 
 % --- Datos ---
 \title{Práctica 0 --- Etapas de Compilación \\[0.5em]
@@ -53,18 +60,53 @@ cpp programa.c programa.i
 \end{lstlisting}
 
 \begin{enumerate}[label=\alph*)]
-  \item ¿Qué ocurre cuando se invoca el comando \texttt{cpp} con esos argumentos?
+  \item ¿Qué ocurre cuando se invoca el comando \texttt{cpp} con esos argumentos? \par
+    cpp es un procesador de macros, particularmente para lenguajes de programacion de la familia de C. Este programa, nos ayuda a interpretar directivos de procesamiento, por ejemplo \textbf{\#include, \#define, \#ifdef, etc.}.
+    Por lo tanto, cuando ejecutamos el comando \textit{cpp}. Este, lee el documento de entrada (\textit{progama.c}) y los
+    documentos que hayan sido incluidos por el directivo \textbf{\#include} y los escribe con la informacion extra generada por los directivos en el programa de salida, \textit{programa.i}.
 
-  \item ¿Qué similitudes encuentra entre los archivos \texttt{programa.c} y
-        \texttt{programa.i}?
-
-  \item ¿Qué pasa con las macros y los comentarios del código fuente original
-        en \texttt{programa.i}?
-
-  \item Compare el contenido de \texttt{programa.i} con el de \texttt{stdio.h}
-        e indique de forma general las similitudes entre ambos archivos.
-
-  \item ¿A qué etapa corresponde este proceso?
+  \item ¿Qué similitudes encuentra entre los archivos \texttt{programa.c} y \texttt{programa.i}? \par
+  En el archivo, \texttt{programa.i}, al final, se puede ver el siguiente codigo:
+    \begin{figure}
+    \begin{lstlisting}
+    int main ( void ) {
+      printf ("Hola Mundo !\\n");
+      float mi_area = (r) (3.1416 * r * r) (3) ;
+      printf ("Resultado : %f\n", mi_area);
+      return 0;
+    }
+    \end{lstlisting}
+    \caption{\textit{Parte final del archivo programa.i}}
+    \end{figure}
+    \begin{figure}
+    \begin{lstlisting}
+    int main ( void ) {
+      printf ("Hola Mundo !\n"); //Funcion para imprimir hola mundo
+      float mi_area = area (3) ; //soy un comentario... hasta donde llegare ?
+      printf ("Resultado : %f\n", mi_area);
+      return 0;
+    }
+    \end{lstlisting}
+    \caption{\textit{Etracto de programa.c}}
+    \end{figure}
+    En la figura 1, podemos ver que las sentencias han sido limpiadas de comentarios, y tambien el macro \textbf{area} ha sido remplazado con su definicion. Pero ambos son programas que saludan al mundo e imprimen el area de un circulo con radio 3.
+  \item ¿Qué pasa con las macros y los comentarios del código fuente original? \par
+  Los macros, son remplazados de manera textual en todas las llamadas de este. Por ejemplo, recordemos
+  la definicion de area:
+  \begin{figure}
+  \begin{lstlisting}
+  # ifdef PI
+  # define area (r) (PI * r * r)
+  # else
+  # define area (r) (3.1416 * r * r)
+  # endif
+  \end{lstlisting}
+  \caption{Definicion de Area en programa.c}
+  \end{figure}
+  Asi, notemos que como no tenemos un directivo que defina PI, se toma la deficion la segunda definicion, la cual podemos ver que es la usada en la Figura 1.
+    Y los comentarios son eliminados, dado que no son necesarios para la etapa de compilacion, solo para el programador.
+  \item Compare el contenido de \texttt{programa.i} con el de \texttt{stdio.h} e indique de forma general las similitudes entre ambos archivos. \par
+    Debido a que hay muchas funciones de stdio.h en programa.i sin directivos de compilacion condicional, ni otro directivo en general. Pienso que \textit{cpp} hace un preprocesado en stdio,h y la salida de este preprocesado solo es remplazado con el directivo de \textbf{\#include}. Por lo tanto las similitudes, son las definiciones de ciertas funciones.
 \end{enumerate}
 
 % ------------------------------------------------------------
@@ -78,13 +120,12 @@ gcc -Wall -S programa.i
 \end{lstlisting}
 
 \begin{enumerate}[label=\alph*)]
-  \item ¿Para qué sirve la opción \texttt{-Wall}?
-
-  \item ¿Qué le indica a \texttt{gcc} la opción \texttt{-S}?
-
-  \item ¿Qué contiene el archivo de salida y cuál es su extensión?
-
-  \item ¿A qué etapa corresponde este comando?
+\item ¿Para qué sirve la opción \texttt{-Wall}? \par
+  Para que el sistema de procesamiento \textit{gcc}, muestre todas las advertencias(Warnings) al construir el codigo objeto.
+\item ¿Qué le indica a \texttt{gcc} la opción \texttt{-S}? \par
+  Que detenga su ejecucion despues de haber compilado, antes de ensamblar.
+\item ¿Qué contiene el archivo de salida y cuál es su extensión? \par
+  Su extension es .s y contiene instrucciones en lenguaje ensamblador generadas con ayuda del archivo \textit{programa.i}.
 \end{enumerate}
 
 % ------------------------------------------------------------
@@ -98,15 +139,13 @@ as programa.s -o programa.o
 \end{lstlisting}
 
 \begin{enumerate}[label=\alph*)]
-  \item Antes de revisarlo, indique cuál es su hipótesis sobre lo que debe
-        contener el archivo con extensión \texttt{.o}.
-
-  \item Diga de forma general qué contiene el archivo \texttt{programa.o} y
-        por qué se visualiza de esa manera.
-
-  \item ¿Qué programa se invoca con \texttt{as}?
-
-  \item ¿A qué etapa corresponde la llamada a este programa?
+\item Antes de revisarlo, indique cuál es su hipótesis sobre lo que debe contener el archivo con extensión \texttt{.o}.
+  \par
+  Yo pienso que nos dara el codigo maquina en bytes de nuestro programa escrito en ensamblador.
+\item Diga de forma general qué contiene el archivo \texttt{programa.o} y por qué se visualiza de esa manera. \par
+Contiene lo que yo creo son bytes y strings que parecen ser etiquetas de lenguaje ensamblador. Estas etiquetas son llamadas directivos e indican instrucciones al momento de el ensamblado.
+\item ¿Qué programa se invoca con \texttt{as}?
+El ensamblador de GNU. Est programa permite ensamblar codigo ensamblador de diferentes arquitecturas en una pasada.
 \end{enumerate}
 
 % ------------------------------------------------------------
@@ -124,7 +163,7 @@ Se buscó la ruta de los siguientes archivos en el equipo de trabajo:
   \item \texttt{crtn.o}
 \end{itemize}
 
-Se ejecutó el siguiente comando, sustituyendo las rutas encontradas:
+Se ejecutó el siguiente comando:
 
 \begin{lstlisting}
 ld -o ejecutable -dynamic-linker /lib/ld-linux-x86-64.so.2 \
@@ -138,14 +177,14 @@ ld -o ejecutable -dynamic-linker /lib/ld-linux-x86-64.so.2 \
         solución para llevar a cabo este proceso con éxito.
 
   \item Describa el resultado obtenido al ejecutar el comando anterior.
+
+    Generamos el codigo en lenguaje maquina, finalmente. El argumento -o indica el nombre que le daremos al archivo de salida en este caso \textbf{ejecutable}. El siguiente argumento, -dynamic-linker es una flag que indica que enlazador usaremos, en este caso \textit{/lib/ld-linux-x86-64.so.2}.
+    Los siguientes argumentos son archivos objeto. Scrt1.o crti.o crtn.o son encargados de crear rutinas para la apertura y el cierre de el ejecutable. Despues, viene el archivo objeto creado por nosotros. En esta parte, tambien vemos la bandera -lc la cual nos ayuda a enlazar \textbf{libc}, la libreria estandar de c.
 \end{enumerate}
 
 % ------------------------------------------------------------
 \subsection{Ejecución}
 % ------------------------------------------------------------
-
-Una vez que se enlazó el código máquina relocalizable, se ejecutó el programa
-con la siguiente instrucción:
 
 \begin{lstlisting}
 ./ejecutable

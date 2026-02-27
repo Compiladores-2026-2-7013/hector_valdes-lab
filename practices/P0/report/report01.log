@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2026.2.17)  27 FEB 2026 11:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2026.2.27)  27 FEB 2026 15:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -36,34 +36,25 @@ Package: babel 2025/02/14 v25.4 The multilingual framework for pdfLaTeX, LuaLaT
 eX and XeLaTeX
 \babel@savecnt=\count270
 \U@D=\dimen142
-\l@unhyphenated=\language3
+\l@unhyphenated=\language6
 
 (/usr/share/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read2
 \bbl@dirlevel=\count271
 
-(/usr/share/texmf-dist/tex/generic/babel/errbabel.def)
-
-! Package babel Error: Unknown option 'spanish'. Either you misspelled it
-(babel)                or the language definition file spanish.ldf
-(babel)                was not found.
-(babel)                There is a locale ini file for this language.
-(babel)                If itâ€™s the main language, try adding `provide=*'
-(babel)                to the babel package options.
-
-See the babel package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.4138 \ProcessOptions*
-                       
-? 
-Package babel Info: You haven't specified a language as a class or package
-(babel)             option. I'll load 'nil'. Reported on input line 4188.
-(/usr/share/texmf-dist/tex/generic/babel/nil.ldf
-Language: nil 2025/02/14 v25.4 Nil language
-\l@nil=\language4
+(/usr/share/texmf-dist/tex/generic/babel-spanish/spanish.ldf
+Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
+\es@quottoks=\toks19
+\es@quotdepth=\count272
+Package babel Info: Making " an active character on input line 570.
+Package babel Info: Making . an active character on input line 675.
+Package babel Info: Making < an active character on input line 722.
+Package babel Info: Making > an active character on input line 722.
 ))
+(/usr/share/texmf-dist/tex/generic/babel/locale/es/babel-spanish.tex
+Package babel Info: Importing font and identification data for spanish
+(babel)             from babel-es.ini. Reported on input line 11.
+)
 (/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2024/11/05 v2.17t AMS math features
 \@mathmargin=\skip51
@@ -74,7 +65,7 @@ Package: amstext 2021/08/26 v2.01 AMS text
 
 (/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks19
+\@emptytoks=\toks20
 \ex@=\dimen143
 ))
 (/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
@@ -84,14 +75,14 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count272
+\inf@bad=\count273
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count273
-\leftroot@=\count274
+\uproot@=\count274
+\leftroot@=\count275
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count275
-\DOTSCASE@=\count276
+\classnum@=\count276
+\DOTSCASE@=\count277
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
@@ -104,31 +95,31 @@ LaTeX Info: Redefining \Bigg on input line 724.
 \big@size=\dimen145
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count277
+\macc@depth=\count278
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count278
+\c@MaxMatrixCols=\count279
 \dotsspace@=\muskip17
-\c@parentequation=\count279
-\dspbrk@lvl=\count280
-\tag@help=\toks20
-\row@=\count281
-\column@=\count282
-\maxfields@=\count283
-\andhelp@=\toks21
+\c@parentequation=\count280
+\dspbrk@lvl=\count281
+\tag@help=\toks21
+\row@=\count282
+\column@=\count283
+\maxfields@=\count284
+\andhelp@=\toks22
 \eqnshift@=\dimen146
 \alignsep@=\dimen147
 \tagshift@=\dimen148
 \tagwidth@=\dimen149
 \totwidth@=\dimen150
 \lineht@=\dimen151
-\@envbody=\toks22
+\@envbody=\toks23
 \multlinegap=\skip52
 \multlinetaggap=\skip53
-\mathdisplay@stack=\toks23
+\mathdisplay@stack=\toks24
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
 )
@@ -145,20 +136,20 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 ))
 (/usr/share/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
-\enitkv@toks@=\toks24
+\enitkv@toks@=\toks25
 \labelindent=\skip54
 \enit@outerparindent=\dimen152
-\enit@toks=\toks25
+\enit@toks=\toks26
 \enit@inbox=\box54
-\enit@count@id=\count284
-\enitdp@description=\count285
+\enit@count@id=\count285
+\enitdp@description=\count286
 )
 (/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 
 (/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks26
+\KV@toks@=\toks27
 )
 (/usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
@@ -166,9 +157,9 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 (/usr/share/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ))
-\Gm@cnth=\count286
-\Gm@cntv=\count287
-\c@Gm@tempcnt=\count288
+\Gm@cnth=\count287
+\Gm@cntv=\count288
+\c@Gm@tempcnt=\count289
 \Gm@bindingoffset=\dimen153
 \Gm@wd@mp=\dimen154
 \Gm@odd@mp=\dimen155
@@ -177,7 +168,7 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \Gm@layoutheight=\dimen158
 \Gm@layouthoffset=\dimen159
 \Gm@layoutvoffset=\dimen160
-\Gm@dimlist=\toks27
+\Gm@dimlist=\toks28
 )
 (/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
@@ -220,19 +211,19 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count289
+\c@section@level=\count290
 )
 (/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count290
+\etb@tempcnta=\count291
 )
 (/usr/share/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
 \@linkdim=\dimen161
-\Hy@linkcounter=\count291
-\Hy@pagecounter=\count292
+\Hy@linkcounter=\count292
+\Hy@pagecounter=\count293
 
 (/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
@@ -242,7 +233,7 @@ Now handling font encoding PD1 ...
 (/usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count293
+\Hy@SavedSpaceFactor=\count294
 
 (/usr/share/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
@@ -256,7 +247,7 @@ Package hyperref Info: Plain pages OFF on input line 4172.
 Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4424.
-\c@Hy@tempcnt=\count294
+\c@Hy@tempcnt=\count295
 
 (/usr/share/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip18
@@ -272,7 +263,7 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count295
+\Fld@menulength=\count296
 \Field@Width=\dimen163
 \Fld@charsize=\dimen164
 Package hyperref Info: Hyper figures OFF on input line 6042.
@@ -287,9 +278,9 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count296
-\c@Item=\count297
-\c@Hfootnote=\count298
+\Hy@abspage=\count297
+\c@Item=\count298
+\c@Hfootnote=\count299
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
@@ -301,8 +292,8 @@ Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
 kage
 with kernel methods
 )
-\Fld@listcount=\count299
-\c@bookmark@seq@number=\count300
+\Fld@listcount=\count300
+\c@bookmark@seq@number=\count301
 
 (/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
@@ -316,17 +307,17 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 \Hy@SectionHShift=\skip55
 )
 (/usr/share/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count301
+\lst@mode=\count302
 \lst@gtempboxa=\box55
-\lst@token=\toks28
-\lst@length=\count302
+\lst@token=\toks29
+\lst@length=\count303
 \lst@currlwidth=\dimen165
-\lst@column=\count303
-\lst@pos=\count304
+\lst@column=\count304
+\lst@pos=\count305
 \lst@lostspace=\dimen166
 \lst@width=\dimen167
-\lst@newlines=\count305
-\lst@lineno=\count306
+\lst@newlines=\count306
+\lst@lineno=\count307
 \lst@maxwidth=\dimen168
 
 (/usr/share/texmf-dist/tex/latex/listings/lstpatch.sty
@@ -334,8 +325,8 @@ File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
 )
 (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
-\c@lstnumber=\count307
-\lst@skipnumbers=\count308
+\c@lstnumber=\count308
+\lst@skipnumbers=\count309
 \lst@framebox=\box56
 )
 (/usr/share/texmf-dist/tex/latex/listings/listings.cfg
@@ -343,6 +334,76 @@ File: listings.cfg 2024/09/23 1.10c listings configuration
 ))
 Package: listings 2024/09/23 1.10c (Carsten Heinz)
 
+(/usr/share/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2024/09/14 v1.9i multicolumn formatting (FMi)
+\c@tracingmulticols=\count310
+\mult@box=\box57
+\multicol@leftmargin=\dimen169
+\c@unbalance=\count311
+\c@collectmore=\count312
+\doublecol@number=\count313
+\multicoltolerance=\count314
+\multicolpretolerance=\count315
+\full@width=\dimen170
+\page@free=\dimen171
+\premulticols=\dimen172
+\postmulticols=\dimen173
+\multicolsep=\skip56
+\multicolbaselineskip=\skip57
+\partial@page=\box58
+\last@line=\box59
+\mc@boxedresult=\box60
+\maxbalancingoverflow=\dimen174
+\mult@rightbox=\box61
+\mult@grightbox=\box62
+\mult@firstbox=\box63
+\mult@gfirstbox=\box64
+\@tempa=\box65
+\@tempa=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\@tempa=\box97
+\@tempa=\box98
+\@tempa=\box99
+\@tempa=\box100
+\c@minrows=\count316
+\c@columnbadness=\count317
+\c@finalcolumnbadness=\count318
+\last@try=\dimen175
+\multicolovershoot=\dimen176
+\multicolundershoot=\dimen177
+\mult@nat@firstbox=\box101
+\colbreak@box=\box102
+\mc@col@check@num=\count319
+)
 (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
@@ -351,30 +412,35 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
 (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count309
-\l__pdf_internal_box=\box57
+\l__color_backend_stack_int=\count320
+\l__pdf_internal_box=\box103
 )
-(./report01.aux)
+(./report01.aux
+LaTeX Info: Redefining \. on input line 11.
+LaTeX Info: Redefining \% on input line 11.
+)
 \openout1 = `report01.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Info: Redefining \. on input line 36.
+LaTeX Info: Redefining \% on input line 36.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -410,32 +476,28 @@ LaTeX Font Info:    ... okay on input line 29.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 29.
+Package hyperref Info: Link coloring OFF on input line 36.
 (./report01.out) (./report01.out)
 \@outlinefile=\write3
 \openout3 = `report01.out'.
 
-\c@lstlisting=\count310
-LaTeX Font Info:    Trying to load font information for U+msa on input line 31.
+\c@lstlisting=\count321
+LaTeX Font Info:    Trying to load font information for U+msa on input line 38.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 31.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 38.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 46.
-
-Overfull \hbox (2.63704pt too wide) in paragraph at lines 61--63
-[]\T1/cmr/m/n/12 ¾Qué pasa con las macros y los comentarios del código fuente o
-riginal en \T1/cmtt/m/n/12 programa.i\T1/cmr/m/n/12 ? 
- []
-
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 53.
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 73.
 
 
 [1
@@ -443,15 +505,14 @@ riginal en \T1/cmtt/m/n/12 programa.i\T1/cmr/m/n/12 ?
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts
 /enc/dvips/cm-super/cm-super-t1.enc}]
 
-[2{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-Underfull \hbox (badness 1215) in paragraph at lines 177--177
-[][][]\T1/cmr/m/n/10 Puede consultarse la lista de directivas en la documentaci
-ón en línea: []$\T1/cmtt/m/n/10 https : / / gcc . gnu .
- []
+[2]
 
+[3]
 
-
-[3] (./report01.aux)
+[4] (./report01.aux
+LaTeX Info: Redefining \. on input line 11.
+LaTeX Info: Redefining \% on input line 11.
+)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -460,27 +521,30 @@ Package rerunfilecheck Info: File `report01.out' has not changed.
 (rerunfilecheck)             Checksum: EFF503ED815DEBDE634CF1A0C4676027;1669.
  ) 
 Here is how much of TeX's memory you used:
- 12788 strings out of 475171
- 191838 string characters out of 5767095
- 842258 words of memory out of 5000000
- 35606 multiletter control sequences out of 15000+600000
- 575235 words of font info for 82 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 75i,8n,79p,365b,1176s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/t
-exmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts
-/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf-dist/fonts/type1/public/c
-m-super/sfrm0800.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm100
-0.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/sha
-re/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/f
-onts/type1/public/cm-super/sfrm2074.pfb></usr/share/texmf-dist/fonts/type1/publ
-ic/cm-super/sftt1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sft
-t1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr
-/share/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb>
-Output written on report01.pdf (3 pages, 218895 bytes).
+ 13353 strings out of 475109
+ 199954 string characters out of 5765325
+ 909317 words of memory out of 5000000
+ 36150 multiletter control sequences out of 15000+600000
+ 578222 words of font info for 90 fonts, out of 8000000 for 9000
+ 40 hyphenation exceptions out of 8191
+ 75i,8n,79p,399b,1400s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/t
+exmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts
+/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/c
+m-super/sfit1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm070
+0.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/sha
+re/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/f
+onts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfr
+m2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr
+/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texmf-di
+st/fonts/type1/public/cm-super/sftt1095.pfb></usr/share/texmf-dist/fonts/type1/
+public/cm-super/sftt1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super
+/sftt1440.pfb>
+Output written on report01.pdf (4 pages, 283261 bytes).
 PDF statistics:
- 172 PDF objects out of 1000 (max. 8388607)
- 140 compressed objects within 2 object streams
- 45 named destinations out of 1000 (max. 500000)
+ 210 PDF objects out of 1000 (max. 8388607)
+ 172 compressed objects within 2 object streams
+ 66 named destinations out of 1000 (max. 500000)
  81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
