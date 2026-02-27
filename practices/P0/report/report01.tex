@@ -186,9 +186,20 @@ ld -o ejecutable -dynamic-linker /lib/ld-linux-x86-64.so.2 \
 \subsection{Ejecución}
 % ------------------------------------------------------------
 
+\begin{figure}[h!]
 \begin{lstlisting}
 ./ejecutable
 \end{lstlisting}
+  \caption{Comando para ejecutar el programa ejecutable}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{lstlisting}
+Hola Mundo !
+Resultado : 28.274401
+\end{lstlisting}
+  \caption{Salida de el programa ejecutable}
+\end{figure}
 
 % ------------------------------------------------------------
 \subsection{Modificación de la macro \texttt{\#define PI}}
@@ -198,9 +209,48 @@ Se quitó el comentario de la macro \texttt{\#define PI} en el código fuente
 original y se realizó lo siguiente:
 
 \begin{enumerate}[label=\alph*)]
-  \item Se generó nuevamente el archivo \texttt{.i} con un nuevo nombre.
+  \item Generamos nuevamente un archivo \texttt{.i} con el nombre programaPI.i y notamos dos diferencias a primera vista. Veamos los siguientes extractos comprarando ambos archivos \textit{.i}.
+\begin{figure}
+\begin{lstlisting}
+int main ( void ) {
+  printf ("Hola Mundo !\n");
+  float mi_area = (3.1416 * 3 * 3) ;
+  printf ("Resultado : %f\n", mi_area);
+  return 0;
+}
 
-  \item ¿Cambia en algo la ejecución final?
+\end{lstlisting}
+\caption{\textit{Extracto de el original programa.i}}
+\end{figure}
+\begin{figure}
+\begin{lstlisting}
+int main ( void ) {
+  printf ("Hola Mundo !\n");
+  float mi_area = (3.1415926535897 * 3 * 3) ;
+  printf ("Resultado : %f\n", mi_area);
+  return 0;
+}
+\end{lstlisting}
+\caption{\textit{Extracto de programaPI.i}}
+\end{figure}
+Esto ocurre debido a que ahora que PI esta definido, el directivo de compilacion condicional define el macro area(r) de otra manera, haciendo asi que cambie el codigo preprocesado.
+\item ¿Cambia en algo la ejecución final? \par
+Veamos la ejecucion despues de haber descomentado la definicion de PI.
+\begin{figure}[h!]
+\begin{lstlisting}
+./ejecutable02
+\end{lstlisting}
+  \caption{Comando para ejecutar el nuevo programa ejecutable}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{lstlisting}
+Hola Mundo !
+Resultado : 28.274334
+\end{lstlisting}
+  \caption{Salida de el nuevo programa ejecutable}
+\end{figure}
+Notemos que el resultado cambia de valor, con respecto a valores despues del punto decimal. Esto ocurre ya que PI ahora tiene muchos mas digitos de precision flotante, permitiendonos hacer operaciones con mayor precision.
 \end{enumerate}
 
 % ------------------------------------------------------------
