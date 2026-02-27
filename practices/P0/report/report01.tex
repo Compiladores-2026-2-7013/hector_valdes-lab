@@ -1,0 +1,190 @@
+\documentclass[12pt, a4paper]{article}
+
+% --- Paquetes ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\geometry{margin=2.5cm}
+
+% --- Configuración de listings ---
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  language=bash
+}
+
+% --- Datos ---
+\title{Práctica 0 --- Etapas de Compilación \\[0.5em]
+\large Compiladores --- Semestre 2026-2}
+\author{Hector Valdes}
+\date{}
+
+\begin{document}
+\maketitle
+
+% ============================================================
+\section{Introducción}
+% ============================================================
+
+En esta práctica se exploran las etapas del proceso de compilación de un
+programa escrito en lenguaje C, desde el preprocesamiento hasta el enlazado.
+Se utiliza cada herramienta de forma individual para observar las
+transformaciones que sufre el código fuente en cada fase.
+
+% ============================================================
+\section{Desarrollo}
+% ============================================================
+
+% ------------------------------------------------------------
+\subsection{Preprocesamiento (\texttt{cpp})}
+% ------------------------------------------------------------
+
+Se ejecutó el siguiente comando para generar el archivo preprocesado:
+
+\begin{lstlisting}
+cpp programa.c programa.i
+\end{lstlisting}
+
+\begin{enumerate}[label=\alph*)]
+  \item ¿Qué ocurre cuando se invoca el comando \texttt{cpp} con esos argumentos?
+
+  \item ¿Qué similitudes encuentra entre los archivos \texttt{programa.c} y
+        \texttt{programa.i}?
+
+  \item ¿Qué pasa con las macros y los comentarios del código fuente original
+        en \texttt{programa.i}?
+
+  \item Compare el contenido de \texttt{programa.i} con el de \texttt{stdio.h}
+        e indique de forma general las similitudes entre ambos archivos.
+
+  \item ¿A qué etapa corresponde este proceso?
+\end{enumerate}
+
+% ------------------------------------------------------------
+\subsection{Compilación (\texttt{gcc -S})}
+% ------------------------------------------------------------
+
+Se ejecutó la siguiente instrucción:
+
+\begin{lstlisting}
+gcc -Wall -S programa.i
+\end{lstlisting}
+
+\begin{enumerate}[label=\alph*)]
+  \item ¿Para qué sirve la opción \texttt{-Wall}?
+
+  \item ¿Qué le indica a \texttt{gcc} la opción \texttt{-S}?
+
+  \item ¿Qué contiene el archivo de salida y cuál es su extensión?
+
+  \item ¿A qué etapa corresponde este comando?
+\end{enumerate}
+
+% ------------------------------------------------------------
+\subsection{Ensamblado (\texttt{as})}
+% ------------------------------------------------------------
+
+Se ejecutó la siguiente instrucción:
+
+\begin{lstlisting}
+as programa.s -o programa.o
+\end{lstlisting}
+
+\begin{enumerate}[label=\alph*)]
+  \item Antes de revisarlo, indique cuál es su hipótesis sobre lo que debe
+        contener el archivo con extensión \texttt{.o}.
+
+  \item Diga de forma general qué contiene el archivo \texttt{programa.o} y
+        por qué se visualiza de esa manera.
+
+  \item ¿Qué programa se invoca con \texttt{as}?
+
+  \item ¿A qué etapa corresponde la llamada a este programa?
+\end{enumerate}
+
+% ------------------------------------------------------------
+\subsection{Enlazado (\texttt{ld})}
+% ------------------------------------------------------------
+
+Se buscó la ruta de los siguientes archivos en el equipo de trabajo:
+
+\begin{itemize}
+  \item \texttt{ld-linux-x86-64.so.2}
+  \item \texttt{Scrt1.o} (o bien, \texttt{crt1.o})
+  \item \texttt{crti.o}
+  \item \texttt{crtbeginS.o}
+  \item \texttt{crtendS.o}
+  \item \texttt{crtn.o}
+\end{itemize}
+
+Se ejecutó el siguiente comando, sustituyendo las rutas encontradas:
+
+\begin{lstlisting}
+ld -o ejecutable -dynamic-linker /lib/ld-linux-x86-64.so.2 \
+   /usr/lib/Scrt1.o /usr/lib/crti.o programa.o \
+   -lc /usr/lib/crtn.o
+\end{lstlisting}
+
+\begin{enumerate}[label=\alph*)]
+  \item En caso de que el comando \texttt{ld} mande errores, investigue cómo
+        enlazar un programa utilizando \texttt{ld} y proponga una posible
+        solución para llevar a cabo este proceso con éxito.
+
+  \item Describa el resultado obtenido al ejecutar el comando anterior.
+\end{enumerate}
+
+% ------------------------------------------------------------
+\subsection{Ejecución}
+% ------------------------------------------------------------
+
+Una vez que se enlazó el código máquina relocalizable, se ejecutó el programa
+con la siguiente instrucción:
+
+\begin{lstlisting}
+./ejecutable
+\end{lstlisting}
+
+% ------------------------------------------------------------
+\subsection{Modificación de la macro \texttt{\#define PI}}
+% ------------------------------------------------------------
+
+Se quitó el comentario de la macro \texttt{\#define PI} en el código fuente
+original y se realizó lo siguiente:
+
+\begin{enumerate}[label=\alph*)]
+  \item Se generó nuevamente el archivo \texttt{.i} con un nuevo nombre.
+
+  \item ¿Cambia en algo la ejecución final?
+\end{enumerate}
+
+% ------------------------------------------------------------
+\subsection{Segundo programa con directivas del preprocesador}
+% ------------------------------------------------------------
+
+Se escribió un segundo programa en lenguaje C que incluye 4 directivas del
+preprocesador distintas entre sí y diferentes de las utilizadas en el primer
+programa.\footnote{Puede consultarse la lista de directivas en la documentación
+en línea:
+\url{https://gcc.gnu.org/onlinedocs/cpp/Index-of-Directives.html}.
+También se puede revisar la entrada para el preprocesador con
+\texttt{man cpp}.}
+
+\begin{enumerate}[label=\alph*)]
+  \item Explique la utilidad general de cada directiva y su función particular
+        en el programa.
+\end{enumerate}
+
+% ============================================================
+\section{Resultados y Conclusiones}
+% ============================================================
+
+
+
+\end{document}
