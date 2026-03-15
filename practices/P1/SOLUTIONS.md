@@ -10,7 +10,7 @@ Si quitamos las llaves a la definicion de los macros, por ejemplo, escribimos **
 
 3. ¿Cómo se escribe un comentario en flex? (0.5 pts)
 # Resultado:
-Usando /* text */para un comentario de varias lineas, y // para un comentario de una linea.
+Usando /* text */, pero tiene que ser indentadas las lineas del comentario.
 
 4. ¿Qué se guarda en yytext? (0.5 pts)
 # Resultado:
@@ -22,7 +22,7 @@ Identifica si son palabras o numeros, y ejecuta la accion lexica dependiendo de 
 
 6. ¿Qué ocurre si introducimos caracteres como "\*" en la consola? (0.5 pts)
 # Resultado:
-Solo los imprime de vuelta.
+Solo los imprime de vuelta. Lo cual es la accion lexica default.
 
 7. Modificar al código anterior en un archivo nuevo, de tal manera que reconozca lo siguiente: (2 pts)
     1. La expresión regular para los hexadecimales en lenguaje C++.
