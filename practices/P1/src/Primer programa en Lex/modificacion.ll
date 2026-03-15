@@ -18,10 +18,10 @@ espacio [ \t\n]
 hexa 0x{hexa_digit}{1,15}
 reservadas "if"|"switch"|"case"|"for"|"else"
 blanks [ |\t|\n]
-mix {digito}|{letra}
-id {letra}+{mix}*
+mix {digito}|{validChars}
+validChars {letra}|[_]
+id {validChars}+{mix}*
 
-  
   /* -------------------------------------- */
 
 %%
