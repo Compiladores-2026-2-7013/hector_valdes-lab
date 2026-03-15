@@ -18,7 +18,7 @@ namespace C_1
     const int COMA = 8;
     const int PYC = 9;
     const int ID = 10;
-    const int IF =11;
+    const int IF = 11;
     const int INT = 12;
     const int WHILE = 13;
     const int ELSE = 14;
