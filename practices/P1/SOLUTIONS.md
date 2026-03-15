@@ -29,4 +29,7 @@ Solo los imprime de vuelta. Lo cual es la accion lexica default.
     2. 5 palabras reservadas del lenguaje C++.
     3. Los identificadores válidos del lenguaje C++, con longitud máxima de 32 caracteres (**Sugerencia**: use el operador {m,n}).
     4. Los espacios en blanco.
+# Observaciones 
+1234hola no seria un identificador valido, pero mi programa lo identifica como una cadena de numeros y una cadena generada por mi regex id. 
+
 
