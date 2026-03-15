@@ -116,8 +116,6 @@ e. Ejecutar mediante: ```./nombreEjecutable```
 
 #### Ejercicios 
 1. ¿Qué ocurre si en la primera sección se quitan las llaves al nombre de la macro letra? (0.5 pts)
-# Respuesta: 
-
 2. ¿Qué ocurre si en la segunda sección se quitan las llaves a las macros? (0.5 pts)
 3. ¿Cómo se escribe un comentario en flex? (0.5 pts)
 4. ¿Qué se guarda en yytext? (0.5 pts)
