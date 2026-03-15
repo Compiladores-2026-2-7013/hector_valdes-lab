@@ -5,28 +5,33 @@
 %option c++
 %option noyywrap
 
+hexa_digit {digito}|[A-F]|[a-f]
 digito [0-9]
 letra [a-zA-Z]
 espacio [ \t\n]
-single_spaces [ |\t|\n]
-reservadas ["if"|"switch"|"case"|"for"|"else"]
-blanks {single_spaces}+|{espacio}
-hexa_digit {digito}|[A-F]
-hexa {hexa_digit}{2}
-id {letra}{1,32}
+  /* ----- MODIFICACIONES PREGUNTA 7 -----
+   
+  1. To model the hexadecimal numbers in cpp. 
+  The biggest number we can storage with primitive types is 0xfffffffffffffff using a long. 
+  2. Removed regex palabra, bc it caused trouble doing the id regex
+  */
+hexa 0x{hexa_digit}{1,15}
+reservadas "if"|"switch"|"case"|"for"|"else"
+blanks [ |\t|\n]
+mix {digito}|{letra}
+id {letra}+{mix}*
 
-  /* ----- MODIFICACIONES PREGUNTA 7 ------*/
-  /* Removed regex palabra, bc it caused trouble doing the id regex
+  
   /* -------------------------------------- */
 
 %%
-
-{hexa} { std::cout << "Encontré un hexadecimal: " << yytext << std::endl; }
-{espacio} { /* La acción léxica puede ir vacía si queremos que el escáner ignore la regla*/}
-{digito}+ { std::cout << "Encontré un número: " << yytext << std::endl; }
+{espacio} {/* Para ignorar retorno de carro*/}
 {reservadas} { std::cout << "Encontré una palabra reservada: " << yytext << std::endl; }
+{hexa} { std::cout << "Encontré un hexadecimal: " << yytext << std::endl; }
+{digito}+ { std::cout << "Encontré un número: " << yytext << std::endl; }
+  /* Considero multiples retornos de carros como espacio blanco pero no solo uno */
+{blanks}+ { std::cout << "Encontré espacios blancos ->" << yytext << "<-"<< std::endl; }
 {id} { std::cout << "Encontré un identificador: " << yytext << std::endl; }
-{blanks} { std::cout << "Encontré espacios blancos ->" << yytext << "<-"<< std::endl; }
 
 %%
 
