@@ -85,3 +85,134 @@ Para la gramática G = ( N, Σ, P, S), descrita por las siguientes producciones:
 
 13. Documentar el código. (0.25pts)
 14. Proponer 4 archivos de prueba nuevos, 2 válidos y 2 inválidos. (0.25pts)
+
+## Respuestas (Actividades Teóricas)
+
+### 1. Conjuntos $N$, $Σ$ y símbolo inicial $S$ (Gramática Original $G$)
+- **Símbolo inicial ($S$)**: `programa`
+- **Conjunto de No Terminales ($N$)**: `{ programa, declaraciones, declaracion, tipo, lista_var, sentencias, sentencia, expresion }`
+- **Conjunto de Terminales ($Σ$)**: `{ int, float, ;, ,, identificador, =, if, (, ), else, while, +, -, *, /, numero }`
+
+#### a. Eliminación de ambigüedad
+La gramática original es ambigua en las producciones de `expresion` puesto que no define precedencia ni asociatividad para los operadores aritméticos (`+`, `-`, `*`, `/`). Para solucionarlo, reestructuramos `expresion` introduciendo nuevos no terminales (`termino` y `factor`) respetando la precedencia tradicional (multiplicativas `*`, `/` sobre aditivas `+`, `-`):
+```text
+expresion → expresion + termino | expresion - termino | termino
+termino → termino * factor | termino / factor | factor
+factor → ( expresion ) | identificador | numero
+```
+Nota: La producción de la estructura *dangling-else* en `sentencia` no presenta ambigüedad en su estado actual, ya que sólo provee la forma `if ( expresion ) sentencias else sentencias` (que requiere el bloque `else` forzosamente, de acuerdo a `P`).
+
+#### b. Eliminación de recursividad izquierda
+Identificamos recursividad izquierda directa en `declaraciones`, `lista_var`, `sentencias`, `expresion` y `termino`.
+Aplicando la transformación general $A \rightarrow A\alpha \mid \beta \implies A \rightarrow \beta A', A' \rightarrow \alpha A' \mid \epsilon$:
+
+- Para `declaraciones`:
+  ```text
+  declaraciones → declaracion declaraciones'
+  declaraciones' → declaracion declaraciones' | ε
+  ```
+- Para `lista_var`:
+  ```text
+  lista_var → identificador lista_var'
+  lista_var' → , identificador lista_var' | ε
+  ```
+- Para `sentencias`:
+  ```text
+  sentencias → sentencia sentencias'
+  sentencias' → sentencia sentencias' | ε
+  ```
+- Para `expresion` (ya contemplando la de ambigüedad):
+  ```text
+  expresion → termino expresion'
+  expresion' → + termino expresion' | - termino expresion' | ε
+  ```
+- Para `termino`:
+  ```text
+  termino → factor termino'
+  termino' → * factor termino' | / factor termino' | ε
+  ```
+
+#### c. Factorización izquierda
+No tenemos producciones en conflicto para aplicar factorización izquierda en esta gramática modificada, pues las producciones de cada terminal no comparten prefijos directos. Específicamente, en `sentencia`, los terminales iniciales son `identificador`, `if` y `while`, los cuales difieren entre sí.
+
+#### d. Conjuntos $N'$ y $P'$ para la gramática $G'$
+- $N' = \{$ `programa`, `declaraciones`, `declaraciones'`, `declaracion`, `tipo`, `lista_var`, `lista_var'`, `sentencias`, `sentencias'`, `sentencia`, `expresion`, `expresion'`, `termino`, `termino'`, `factor` $\}$
+- $P' = \{$
+  1. `programa → declaraciones sentencias`
+  2. `declaraciones → declaracion declaraciones'`
+  3. `declaraciones' → declaracion declaraciones' | ε`
+  4. `declaracion → tipo lista_var ;`
+  5. `tipo → int | float`
+  6. `lista_var → identificador lista_var'`
+  7. `lista_var' → , identificador lista_var' | ε`
+  8. `sentencias → sentencia sentencias'`
+  9. `sentencias' → sentencia sentencias' | ε`
+  10. `sentencia → identificador = expresion ;`
+  11. `sentencia → if ( expresion ) sentencias else sentencias`
+  12. `sentencia → while ( expresion ) sentencias`
+  13. `expresion → termino expresion'`
+  14. `expresion' → + termino expresion' | - termino expresion' | ε`
+  15. `termino → factor termino'`
+  16. `termino' → * factor termino' | / factor termino' | ε`
+  17. `factor → ( expresion ) | identificador | numero`
+$\}$
+
+
+### 2. Conjuntos FIRST de la gramática $G'$
+
+- FIRST(factor) = `{ (, identificador, numero }`
+- FIRST(termino') = `{ *, /, ε }`
+- FIRST(termino) = `{ (, identificador, numero }`
+- FIRST(expresion') = `{ +, -, ε }`
+- FIRST(expresion) = `{ (, identificador, numero }`
+- FIRST(sentencia) = `{ identificador, if, while }`
+- FIRST(sentencias') = `{ identificador, if, while, ε }`
+- FIRST(sentencias) = `{ identificador, if, while }`
+- FIRST(lista_var') = `{ ,, ε }`
+- FIRST(lista_var) = `{ identificador }`
+- FIRST(tipo) = `{ int, float }`
+- FIRST(declaracion) = `{ int, float }`
+- FIRST(declaraciones') = `{ int, float, ε }`
+- FIRST(declaraciones) = `{ int, float }`
+- FIRST(programa) = `{ int, float }`
+
+
+### 3. Conjuntos FOLLOW de la gramática $G'$
+
+- FOLLOW(programa) = `{ $ }`
+- FOLLOW(declaraciones) = `{ identificador, if, while }`
+- FOLLOW(declaraciones') = `{ identificador, if, while }`
+- FOLLOW(declaracion) = `{ int, float, identificador, if, while }`
+- FOLLOW(tipo) = `{ identificador }`
+- FOLLOW(lista_var) = `{ ; }`
+- FOLLOW(lista_var') = `{ ; }`
+- FOLLOW(sentencias) = `{ $, else }`
+- FOLLOW(sentencias') = `{ $, else }`
+- FOLLOW(sentencia) = `{ identificador, if, while, $, else }`
+- FOLLOW(expresion) = `{ ;, ) }`
+- FOLLOW(expresion') = `{ ;, ) }`
+- FOLLOW(termino) = `{ +, -, ;, ) }`
+- FOLLOW(termino') = `{ +, -, ;, ) }`
+- FOLLOW(factor) = `{ *, /, +, -, ;, ) }`
+
+### 4. Tabla de Análisis Sintáctico Predictivo $M[A, a]$
+
+> **Notación**: Las celdas muestran la parte derecha de la producción elegida para el símbolo No Terminal $A$ (renglones) y Terminal $a$ (columnas).
+
+| No Terminal \ Terminal | int | float | ; | , | identificador | = | if | ( | ) | else | while | + | - | * | / | numero | $ |
+| ---------------------- | :-: | :---: | :-: | :-: | :---: | :-: | :-: | :-: | :-: | :--: | :---: | :-: | :-: | :-: | :-: | :----: | :-: |
+| **programa** | `declaraciones sentencias` | `declaraciones sentencias` | | | | | | | | | | | | | | | |
+| **declaraciones** | `declaracion declaraciones'` | `declaracion declaraciones'` | | | | | | | | | | | | | | | |
+| **declaraciones'** | `declaracion declaraciones'` | `declaracion declaraciones'` | | | `ε` | | `ε` | | | | `ε` | | | | | | |
+| **declaracion** | `tipo lista_var ;` | `tipo lista_var ;` | | | | | | | | | | | | | | | |
+| **tipo** | `int` | `float` | | | | | | | | | | | | | | | |
+| **lista_var** | | | | | `identificador lista_var'` | | | | | | | | | | | | |
+| **lista_var'** | | | `ε` | `, identificador lista_var'` | | | | | | | | | | | | | |
+| **sentencias** | | | | | `sentencia sentencias'` | | `sentencia sentencias'` | | | | `sentencia sentencias'` | | | | | | |
+| **sentencias'** | | | | | `sentencia sentencias'` | | `sentencia sentencias'` | | | `ε` | `sentencia sentencias'` | | | | | | `ε` |
+| **sentencia** | | | | | `identificador = expresion ;`| | `if ( expresion ) sentencias else sentencias` | | | | `while ( expresion ) sentencias` | | | | | | |
+| **expresion** | | | | | `termino expresion'` | | | `termino expresion'` | | | | | | | | `termino expresion'` | |
+| **expresion'** | | | `ε` | | | | | | `ε` | | | `+ termino expresion'` | `- termino expresion'` | | | | |
+| **termino** | | | | | `factor termino'` | | | `factor termino'` | | | | | | | | `factor termino'` | |
+| **termino'** | | | `ε` | | | | | | `ε` | | | `ε` | `ε` | `* factor termino'` | `/ factor termino'` | | |
+| **factor** | | | | | `identificador` | | | `( expresion )` | | | | | | | | `numero` | |

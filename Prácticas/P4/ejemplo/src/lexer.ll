@@ -19,6 +19,7 @@ using namespace std;
 
 DIG [0-9]
 WSPC [ \t]+
+FLT {DIG}+\.{DIG}+
 
 %%
 
@@ -26,6 +27,16 @@ WSPC [ \t]+
 "+"	{
 	 cout << "Terminal + detectado" << endl;	
 	 return Parser::token::MAS;
+	}
+
+"-"	{
+	 cout << "Terminal - detectado" << endl;	
+	 return Parser::token::MENOS;
+	}
+
+"/"	{
+	 cout << "Terminal / detectado" << endl;	
+	 return Parser::token::DIV;
 	}
 
 "*"	{
@@ -43,17 +54,26 @@ WSPC [ \t]+
 	 return Parser::token::PARDER;
 	}
 
+{FLT}	{
+	 cout << "Terminal numérico flotante " << yytext << " detectado" << endl;
+	 yylval->numero.val = atof(yytext);
+	 yylval->numero.tipo = 2; /* 2: Flotante */
+	 return Parser::token::NUM;
+	}
+
 {DIG}+	{
-	 cout << "Terminal numérico " << yytext << " detectado" << endl;
-	 yylval->numero.ival = atoi(yytext);
-	 yylval->numero.tipo = 1; /* 1: Entero, 2: Flotante */
+	 cout << "Terminal numérico entero " << yytext << " detectado" << endl;
+	 yylval->numero.val = atof(yytext);
+	 yylval->numero.tipo = 1; /* 1: Entero */
 	 return Parser::token::NUM;
 	}
 
 {WSPC}  { /* Ignoramos espacios en blanco */ }
 
+"\n"    {  return Parser::token::ENDL; }
+
 .	{
-	  cout << "Error léxico en la línea: " << yylineno << endl;
+	  cout << "Error léxico en la línea: " << yylineno << " -> " << yytext << endl;
 	}
 
 

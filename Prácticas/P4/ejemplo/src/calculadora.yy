@@ -29,32 +29,52 @@ using namespace std;
 }
 
 %union {
-  struct { //declarado para manejar los tipos de número posibles: 1.- entero, 2.- flotante.
-    int ival; //valor 
-    int tipo;
+  struct { 
+    double val; //valor unificado
+    int tipo; //1: entero, 2: flotante
   } numero;
 }
 
 %token<numero> NUM
+%token ENDL
 
-%left MAS
-%left MUL
+%left MAS MENOS
+%left MUL DIV
+
+%precedence UMINUS
 
 %nonassoc PARIZQ
 %nonassoc PARDER
 
 %type<numero> expresion
 
-%start line
+%start lines
 
 %%
 
-line: expresion { cout << "Análisis léxico y sintáctico terminado.\nEl valor de la expresión ya evaluada es: " << $1.ival << endl; };
+lines:
+    lines line
+  | line
+  ;
 
-expresion : expresion MAS expresion { $$.ival = $1.ival + $3.ival; };
-	  | expresion MUL expresion { $$.ival = $1.ival * $3.ival; };
-	  | PARIZQ expresion PARDER { $$ = $2; };
-	  | NUM { $$ = $1; };
+line: 
+    expresion ENDL { 
+        cout << "Evaluación correcta: " << $1.val;
+        if($1.tipo == 2) cout << " (flotante)";
+        else cout << " (entero)";
+        cout << endl; 
+    }
+  | ENDL { }
+  ;
+
+expresion : expresion MAS expresion   { $$.val = $1.val + $3.val; $$.tipo = ($1.tipo == 2 || $3.tipo == 2) ? 2 : 1; }
+	  | expresion MENOS expresion { $$.val = $1.val - $3.val; $$.tipo = ($1.tipo == 2 || $3.tipo == 2) ? 2 : 1; }
+	  | expresion MUL expresion   { $$.val = $1.val * $3.val; $$.tipo = ($1.tipo == 2 || $3.tipo == 2) ? 2 : 1; }
+	  | expresion DIV expresion   { $$.val = $1.val / $3.val; $$.tipo = ($1.tipo == 2 || $3.tipo == 2) ? 2 : 1; }
+	  | MENOS expresion %prec UMINUS { $$.val = -$2.val; $$.tipo = $2.tipo; }
+	  | PARIZQ expresion PARDER   { $$ = $2; }
+	  | NUM                       { $$ = $1; }
+	  ;
 
 %%
 

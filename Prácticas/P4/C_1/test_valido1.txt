@@ -1,0 +1,3 @@
+int var_1 , otra_var ;
+var_1 = 5 + 4 * 2 - 1 ;
+otra_var = var_1 / 2 ;

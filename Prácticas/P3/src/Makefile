@@ -34,7 +34,7 @@ wc: $(FILES)
 
 
 lexer: lexer.ll
-	flex $<
+	flex -o Lexer.cpp $<
 	$(CXX) $(CXXFLAGS) -c Lexer.cpp -o lexer.o
 
 .PHONY: clean
